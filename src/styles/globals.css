@@ -1,0 +1,227 @@
+@import './tokens.css';
+@import './animations.css';
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Background Celestial Ambience */
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: 25%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(78, 224, 216, 0.04) 0%, rgba(229, 193, 88, 0.03) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -15%;
+  right: 15%;
+  width: 45vw;
+  height: 45vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.04) 0%, rgba(78, 224, 216, 0.02) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(90px);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Glass Panels & Cards */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation);
+}
+
+.glass-card {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-active);
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+.glass-card.active {
+  border-color: var(--border-gold);
+  box-shadow: var(--glow-gold);
+}
+
+/* Celestial Buttons */
+.btn-celestial-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 26px;
+  background: linear-gradient(135deg, #f5df93 0%, #e5c158 50%, #c49c30 100%);
+  color: #0c0d12;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(229, 193, 88, 0.25);
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn-celestial-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(229, 193, 88, 0.45);
+  background: linear-gradient(135deg, #fae69e 0%, #ebd06e 50%, #cca539 100%);
+}
+
+.btn-celestial-primary:active {
+  transform: translateY(0);
+}
+
+.btn-celestial-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition-normal);
+}
+
+.btn-celestial-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+.btn-celestial-secondary.active {
+  background: rgba(78, 224, 216, 0.1);
+  border-color: var(--border-cyan);
+  color: var(--accent-cyan-light);
+}
+
+/* Celestial Badges & Pills */
+.badge-celestial {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  background: rgba(229, 193, 88, 0.08);
+  border: 1px solid rgba(229, 193, 88, 0.25);
+  color: var(--accent-gold-light);
+}
+
+.badge-cyan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  background: rgba(78, 224, 216, 0.08);
+  border: 1px solid rgba(78, 224, 216, 0.25);
+  color: var(--accent-cyan-light);
+}
+
+/* Subtle Shimmer text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff2c4 0%, #e5c158 60%, #b89025 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-cyan-gradient {
+  background: linear-gradient(135deg, #c7fbf8 0%, #4ee0d8 60%, #1ea59e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
